@@ -27,7 +27,7 @@ class EmployeesImport implements ToModel, WithHeadingRow
             'designation_id' => $designation->id,
         ]);
 
-        // $this->sendEmailNotification($employee);
+        // $this->sendEmailNotification($employee); //uncomment for mailing
 
         return $employee;
     }
@@ -36,7 +36,7 @@ class EmployeesImport implements ToModel, WithHeadingRow
     {
         try {
             // Send the email
-            Mail::to($employee->email)->send(new UserNotificationMail($employee));
+            Mail::to($employee->email)->send(new UserNotificationMail($employee)); 
 
             // Update the email status to 'received' if successful
             $employee->update(['email_status' => 'received']);
