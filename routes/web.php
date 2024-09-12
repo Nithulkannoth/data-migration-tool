@@ -27,6 +27,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::resource('departments', DepartmentController::class);
     Route::resource('designations', DesignationController::class);
+
+    
 });
 
 Route::get('login', function () {
@@ -34,3 +36,4 @@ Route::get('login', function () {
 })->name('login');
 
 Route::post('login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

@@ -23,7 +23,9 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return view('auth.registration_success');
+
+        return redirect()->route('login')->with('success', 'You have successfully registered.');
+        // return view('auth.registration_success');
        
     }
 
@@ -43,5 +45,22 @@ class AuthController extends Controller
 
         return redirect()->route('dashboard');
 
+    }
+
+    public function logout(Request $request)
+    {
+        // Revoke all tokens for the authenticated user
+        $user = Auth::user();
+        $user->tokens()->delete();
+
+        // Log the user out of the session
+        Auth::logout();
+
+        // Clear session data related to the auth token
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirect to the login page after logout
+        return redirect()->route('login')->with('success', 'You have successfully logged out.');
     }
 }

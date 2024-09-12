@@ -3,26 +3,56 @@
 @section('title', 'Login')
 
 @section('content')
+<div class="container mt-5">
+    <div class="d-flex justify-content-end">
+        <a href="{{ route('user.register') }}" class="btn btn-success">Register</a>
+    </div>
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    
     <h2>Login</h2>
     <form method="POST" action="{{ url('login') }}">
         @csrf
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" value="{{ old('email') }}" required>
-            @error('email')
-                <span style="color:red">{{ $message }}</span>
-            @enderror
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" required>
-            @error('password')
-                <span style="color:red">{{ $message }}</span>
-            @enderror
-        </div>
-        <button type="submit">Login</button>
+        <table class="table table-borderless">
+            <tr>
+                <td>
+                    <label for="email">Email:</label>
+                </td>
+                <td>
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="password">Password:</label>
+                </td>
+                <td>
+                    <input type="password" class="form-control" name="password" required>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </td>
+            </tr>
+        </table>
     </form>
-
-    <a href="{{ route('user.register') }}" class="btn btn-primary">Register</a>
-
+</div>
 @endsection

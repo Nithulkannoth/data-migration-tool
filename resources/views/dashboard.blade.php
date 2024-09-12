@@ -11,5 +11,7 @@
         <p><a href="{{ route('employees.upload.form') }}" class="btn btn-primary">Upload Employees</a></p>
         <p><a href="{{ route('departments.index') }}" class="btn btn-primary">Departments</a></p>
         <p><a href="{{ route('designations.index') }}" class="btn btn-primary">Designations</a></p>
+
+        <p><a href="{{ route('logout') }}">Signout</a></p>
     </div>
 @endsection
