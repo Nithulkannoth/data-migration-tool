@@ -22,4 +22,7 @@
         </div>
         <button type="submit">Login</button>
     </form>
+
+    <a href="{{ route('user.register') }}" class="btn btn-primary">Register</a>
+
 @endsection

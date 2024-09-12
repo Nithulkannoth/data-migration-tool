@@ -7,7 +7,7 @@ use App\Http\Controllers\EmployeeController;
 
 Route::get('register', function () {
     return view('auth.register');
-});
+})->name('user.register');
 
 Route::post('register', [AuthController::class, 'register']);
 
