@@ -22,16 +22,13 @@ class EmployeeController extends Controller
             'file' => 'required|mimes:xlsx,xls,csv',
         ]);
 
-        // Store the uploaded file
         $filePath = $request->file('file')->store('temp');
 
-        // Dispatch the import job
         ProcessEmployeeImport::dispatch($filePath);
 
         return response()->json(['message' => 'File uploaded and import started.']);
     }
 
-    // Return the progress of the import
     public function progress()
     {
         $importStatus = ImportStatus::latest()->first();
