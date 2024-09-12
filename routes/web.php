@@ -16,7 +16,7 @@ Route::post('register', [AuthController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // Dashboard route
-    Route::get('/dashboard', function () {
+    Route::get('', function () {
         return view('dashboard');
     })->name('dashboard');
     
@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('designations', DesignationController::class);
 });
 
-Route::get('', function () {
+Route::get('login', function () {
     return view('auth.login');  
 })->name('login');
 

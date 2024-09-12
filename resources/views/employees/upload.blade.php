@@ -25,6 +25,9 @@
 
         <div id="progressText" class="mt-2">Upload Progress: 0%</div>
     </div>
+    <div class="container mt-5">
+        <p><a href="{{ route('dashboard') }}" class="btn btn-primary">Back to dashboard</a></p>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

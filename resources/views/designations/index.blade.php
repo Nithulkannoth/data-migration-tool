@@ -49,19 +49,8 @@
     <div>
         {{ $designations->links() }}
     </div>
-@endsection
 
-@section('scripts')
-    <script>
-        function changeSvgSize(className, width, height) {
-            var svgs = document.querySelectorAll(className);
-            svgs.forEach(function(svg) {
-                svg.setAttribute('width', width);
-                svg.setAttribute('height', height);
-            });
-        }
-
-        // Change the SVG size to 50x50 for all elements with the class 'resize-svg'
-        changeSvgSize('.w-5', '15', '15');
-    </script>
+    <div class="container mt-5">
+        <p><a href="{{ route('dashboard') }}" class="btn btn-primary">Back to dashboard</a></p>
+    </div>
 @endsection
