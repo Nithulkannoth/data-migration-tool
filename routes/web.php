@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
 
 Route::get('register', function () {
     return view('auth.register');
@@ -22,6 +24,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/employees/upload', [EmployeeController::class, 'showUploadForm'])->name('employees.upload.form');
     Route::post('/employees/upload', [EmployeeController::class, 'upload'])->name('employees.upload');
     Route::get('/employees/progress', [EmployeeController::class, 'progress'])->name('employees.progress');
+
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('designations', DesignationController::class);
 });
 
 Route::get('', function () {

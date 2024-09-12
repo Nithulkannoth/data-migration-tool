@@ -43,6 +43,5 @@ class AuthController extends Controller
 
         return redirect()->route('dashboard');
 
-        // return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
     }
 }
