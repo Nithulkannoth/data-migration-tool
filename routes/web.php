@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('register', function () {
     return view('auth.register');
@@ -20,3 +21,7 @@ Route::get('', function () {
 })->name('login');
 
 Route::post('login', [AuthController::class, 'login']);
+
+Route::get('/employees/upload', [EmployeeController::class, 'showUploadForm'])->name('employees.upload.form');
+Route::post('/employees/upload', [EmployeeController::class, 'upload'])->name('employees.upload');
+Route::get('/employees/progress', [EmployeeController::class, 'progress'])->name('employees.progress');
