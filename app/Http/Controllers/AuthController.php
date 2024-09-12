@@ -23,7 +23,8 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return response()->json(['message' => 'User registered successfully']);
+        return view('auth.registration_success');
+       
     }
 
     public function login(Request $request)
@@ -34,7 +35,7 @@ class AuthController extends Controller
         ]);
 
         if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(['message' => 'Invalid login credentials'], 401);
+            return view('auth.login_failed');
         }
 
         $user = Auth::user();
