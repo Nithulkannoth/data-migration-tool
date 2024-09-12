@@ -11,6 +11,7 @@
     <div class="container mt-5">
         <h2>Upload Employee Excel File</h2>
         <form id="uploadForm" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="file">Excel File</label>
                 <input type="file" id="file" name="file" class="form-control">

@@ -12,16 +12,20 @@ Route::get('register', function () {
 Route::post('register', [AuthController::class, 'register']);
 
 
-Route::middleware('auth:sanctum')->get('/dashboard', function () {
-    return view('dashboard');  
-})->name('dashboard');
+Route::middleware('auth:sanctum')->group(function () {
+    // Dashboard route
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    // Employee routes
+    Route::get('/employees/upload', [EmployeeController::class, 'showUploadForm'])->name('employees.upload.form');
+    Route::post('/employees/upload', [EmployeeController::class, 'upload'])->name('employees.upload');
+    Route::get('/employees/progress', [EmployeeController::class, 'progress'])->name('employees.progress');
+});
 
 Route::get('', function () {
     return view('auth.login');  
 })->name('login');
 
 Route::post('login', [AuthController::class, 'login']);
-
-Route::get('/employees/upload', [EmployeeController::class, 'showUploadForm'])->name('employees.upload.form');
-Route::post('/employees/upload', [EmployeeController::class, 'upload'])->name('employees.upload');
-Route::get('/employees/progress', [EmployeeController::class, 'progress'])->name('employees.progress');
